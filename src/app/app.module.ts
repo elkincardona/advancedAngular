@@ -1,6 +1,3 @@
-// Temp
-import { FormsModule } from '@angular/forms';
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -15,6 +12,13 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './login/register.component';
 
 
+// Services
+import { ServiceModule } from './services/service.module';
+
+// Temp
+import { FormsModule } from '@angular/forms';
+
+
 
 @NgModule({
   declarations: [
@@ -26,6 +30,7 @@ import { RegisterComponent } from './login/register.component';
     BrowserModule,
     APP_ROUTES,
     PagesModule,
+    ServiceModule,
     FormsModule
   ],
   providers: [],

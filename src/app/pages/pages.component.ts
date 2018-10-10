@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
+// *******
+// Call javascript functions outside angular
+// *******
+declare function init_puglins();
+
 @Component({
   selector: 'app-pages',
   templateUrl: './pages.component.html',
@@ -10,6 +15,7 @@ export class PagesComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    init_puglins();
   }
 
 }

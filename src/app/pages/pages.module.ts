@@ -18,6 +18,7 @@ import { ChartsModule } from 'ng2-charts';
 // Components
 import { IncrementComponent } from '../components/increment/increment.component';
 import { GraphicComponent } from './../components/graphic/graphic.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
 
 
@@ -29,7 +30,8 @@ import { GraphicComponent } from './../components/graphic/graphic.component';
         ProgressComponent,
         Graphics1Component,
         IncrementComponent,
-        GraphicComponent
+        GraphicComponent,
+        AccountSettingsComponent
     ],
     exports: [
         PagesComponent,
