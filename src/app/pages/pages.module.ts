@@ -19,6 +19,8 @@ import { ChartsModule } from 'ng2-charts';
 import { IncrementComponent } from '../components/increment/increment.component';
 import { GraphicComponent } from './../components/graphic/graphic.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { PromisesComponent } from './promises/promises.component';
+import { RxjsComponent } from './rxjs/rxjs.component';
 
 
 
@@ -31,7 +33,9 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
         Graphics1Component,
         IncrementComponent,
         GraphicComponent,
-        AccountSettingsComponent
+        AccountSettingsComponent,
+        PromisesComponent,
+        RxjsComponent
     ],
     exports: [
         PagesComponent,
