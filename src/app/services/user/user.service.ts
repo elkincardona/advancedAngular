@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { servicesUrl } from 'src/app/config/config';
 import { map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { UploadFileService } from '../upload-file/upload-file.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,15 @@ export class UserService {
   user: User;
   token: string;
 
+  public getUser() {
+    return this.user;
 
-  constructor(public http: HttpClient, private _router: Router) {
+  }
+
+  constructor(
+    public http: HttpClient,
+    private _router: Router,
+    private _uploadService: UploadFileService) {
     this.loadStorage();
   }
 
@@ -23,7 +31,7 @@ export class UserService {
     return (this.token) ? true : false;
   }
 
-  loadStorage() {
+  private loadStorage() {
     if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
       this.user = JSON.parse(localStorage.getItem('user'));
@@ -33,7 +41,7 @@ export class UserService {
     }
   }
 
-  saveStorage(id: string, token: string, user: User) {
+  private saveStorage(id: string, token: string, user: User) {
     localStorage.setItem('id', id);
     localStorage.setItem('token', token);
     localStorage.setItem('user', JSON.stringify(user));
@@ -101,7 +109,7 @@ export class UserService {
     .pipe(
 
       map( (resp: any) => {
-        swal("Importante", "Usuario creado correctamente", "success");
+        swal("Importante", "User created correctly", "success");
         return resp.user;
       })
 
@@ -109,5 +117,36 @@ export class UserService {
   }
 
 
+  updateUser(user: User) {
+    let url = servicesUrl + '/user/' + user._id;
+    url += '?token=' + this.token;
+
+    // **** before angular 6 it was return this.http.post(url, user).map( (resp: any) => {return resp.user;});
+    return this.http.put(url, user)
+    .pipe(
+
+      map( (resp: any) => {
+        swal("Important", "User updated correctly", "success");
+        this.saveStorage(resp.user._id, this.token, resp.user);
+        return true;
+      })
+
+    );
+
+  }
+
+
+
+  updateProfileImage( file: File, id: string) {
+      this._uploadService.uploadFile(file, 'users', id)
+      .then( (resp: any) => {
+        swal('Image updated', this.user.name, 'success');
+        this.user.image = resp.users.image;
+        this.saveStorage(this.user._id, this.token, this.user);
+      })
+      .catch( err => {
+          console.log(err);
+      });
+  }
 
 }

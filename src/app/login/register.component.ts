@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit {
     }
 
     if (!this.formControl.value.terms ) {
-      swal("Importante", "Debe aceptar las condiciones", "warning");
+      swal("Important", "Must be accept terms", "warning");
       // console.log('Debe aceptar las condiciones');
       return;
     }
@@ -61,7 +61,7 @@ export class RegisterComponent implements OnInit {
        // console.log(resp);
        this._router.navigate(['/login']);
     }, err => {
-       swal("Importante", err.error.errors.message, "error");
+       swal("Important", err.error.errors.message, "error");
        // console.log(err);
     });
 

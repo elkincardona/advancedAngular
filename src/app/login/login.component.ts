@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
         //this._router.navigate([ '/dashboard' ]);
         window.location.href = '#/dashboard';
     }, err => {
-      swal("Importante", err.error.message, "error");
+      swal("Important", err.error.message, "error");
       // console.log(err);
    });
 

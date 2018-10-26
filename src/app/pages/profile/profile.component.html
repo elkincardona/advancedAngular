@@ -1,0 +1,55 @@
+<div class="row animated fadeIn">
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">User profile</h4>
+                <h6 class="card-subtitle">User information</h6>
+                <form ngNativeValidate #frm="ngForm" (ngSubmit)="saveData( frm.value )" class="form p-t-20">
+                    <div class="form-group">
+                        <label for="exampleInputuname">User Name</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input type="text" name="name" [ngModel]="user.name" class="form-control" placeholder="Username" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Email address</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-email"></i></div>
+                            <input [ngModel]="user.email" [disabled]="user.google" name="email" type="email" class="form-control" placeholder="Enter email" required>
+                        </div>
+                    </div>
+
+
+                    <button type="submit" class="btn  btn-success waves-effect waves-light m-r-10">
+                      <i class="fa fa-save"></i>
+                      Save</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-5">
+        <div class="card">
+            <div class="card-body" align="center">
+                <h4 class="card-title">User picture</h4>
+                <h6 class="card-subtitle">Picture</h6>
+
+                <img class="w150" *ngIf="imageTemp" [src]="imageTemp">
+                <img class="w150" *ngIf="!imageTemp" [src]="user.image | image">
+
+
+                <input type="file" (change)="imageSelection( $event.target.files[0] )">
+                <br/> <br/>
+                <button (click)="changeImage()" [disabled]="!imageUpload" type="button" class="btn btn-block btn-success waves-effect waves-light m-r-10">
+                    <i class="fa fa-save"></i>
+                    Update photo</button>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>

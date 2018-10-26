@@ -6,8 +6,10 @@ import {
   SidebarService,
   SettingsService,
   UserService,
-  LoginGuardGuard
+  LoginGuardGuard,
+  UploadFileService
 } from './service.index';
+
 
 
 
@@ -21,7 +23,8 @@ import {
     SidebarService,
     SettingsService,
     UserService,
-    LoginGuardGuard
+    LoginGuardGuard,
+    UploadFileService
   ]
   ,
   declarations: []
