@@ -149,4 +149,65 @@ export class UserService {
       });
   }
 
+  getUsers(from: number = 0, pageSize: number) {
+    const url = servicesUrl + '/user?skip=' + from.toString() + '&limit=' + pageSize.toString();
+
+    // **** before angular 6 it was return this.http.post(url, user).map( (resp: any) => {return resp.user;});
+    return this.http.get(url)
+    .pipe(
+
+      map( (resp: any) => {
+        return resp;
+      })
+
+    );
+
+  }
+
+
+  search(term: string, from: number = 0, pageSize: number) {
+
+    const url = servicesUrl + '/search/collection/users/' + term + '?skip=' + from.toString() + '&limit=' + pageSize.toString();
+
+    // **** before angular 6 it was return this.http.post(url, user).map( (resp: any) => {return resp.user;});
+    return this.http.get(url)
+    .pipe(
+
+      map( (resp: any) => {
+        return resp;
+      })
+
+    );
+
+  }
+
+  removeUser( id: string) {
+    let url = servicesUrl + '/user/' + id;
+    url += '?token=' + this.token;
+
+    // **** before angular 6 it was return this.http.post(url, user).map( (resp: any) => {return resp.user;});
+    return this.http.delete( url );
+  }
+
+
+  updateRole( user: User) {
+
+    let url = servicesUrl + '/user/' + user._id;
+    url += '?token=' + this.token;
+
+   // **** before angular 6 it was return this.http.post(url, user).map( (resp: any) => {return resp.user;});
+   return this.http.put(url, user)
+   .pipe(
+
+     map( (resp: any) => {
+       if (this.user._id === user._id) {
+        this.saveStorage(resp.user._id, this.token, resp.user);
+       }
+       return true;
+     })
+
+   );
+  }
+
+
 }

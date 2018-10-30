@@ -5,3 +5,25 @@
 .w150 {
     width: 150px;
 }
+
+.w50 {
+    width: 50px;
+}
+
+.w70 {
+    width: 50px;
+}
+
+.blackBackground {
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1114;
+}
+
+.hideModal {
+    display: none;
+}

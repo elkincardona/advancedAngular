@@ -16,6 +16,16 @@ export class SidebarService {
         {tittle: 'Promises', icon: 'mdi mdi-gauge', url: '/promises'},
         {tittle: 'Rxjs', icon: 'mdi mdi-gauge', url: '/rxjs'}
       ]
+    },
+    {
+      tittle: 'Admin',
+      icon: 'mdi mdi-folder-lock-open',
+      submenus: [
+        {tittle: 'Users', icon: 'mdi mdi-gauge', url: '/users'},
+        {tittle: 'Doctors', icon: 'mdi mdi-gauge', url: '/doctors'},
+        {tittle: 'Hospitals', icon: 'mdi mdi-gauge', url: '/hospitals'}
+      ]
+
     }
   ];
 

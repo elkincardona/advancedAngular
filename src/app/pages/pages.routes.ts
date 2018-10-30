@@ -10,6 +10,7 @@ import { PromisesComponent } from './promises/promises.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { LoginGuardGuard } from '../services/service.index';
 import { ProfileComponent } from './profile/profile.component';
+import { UsersComponent } from './users/users.component';
 
 
 
@@ -24,8 +25,10 @@ const pagesRouter: Routes = [
             {path: 'graphics1', component: Graphics1Component, data: {tittle: 'Graphics'}},
             {path: 'promises', component: PromisesComponent, data: {tittle: 'Promises'}},
             {path: 'account-settings', component: AccountSettingsComponent, data: {tittle: 'Account Settings'}},
-            {path: 'profile', component: ProfileComponent, data: {tittle: 'User Profile'}},
             {path: 'rxjs', component: RxjsComponent, data: {tittle: 'Rxjs Observables'}},
+            // maintenance
+            {path: 'profile', component: ProfileComponent, data: {tittle: 'User Profile'}},
+            {path: 'users', component: UsersComponent, data: {tittle: 'Users admin'}},
             {path: '', redirectTo: '/dashboard', pathMatch: 'full' }
         ]
     }
