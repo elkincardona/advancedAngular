@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/service.index';
-import { Subscriber } from 'rxjs';
 import { ModaluploadService } from 'src/app/components/modalupload/modalupload.service';
 
 // so that swal doesnt generate sintax error

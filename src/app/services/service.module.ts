@@ -8,7 +8,9 @@ import {
   SettingsService,
   UserService,
   LoginGuardGuard,
-  UploadFileService
+  UploadFileService,
+  HospitalService,
+  DoctorService
 } from './service.index';
 
 
@@ -23,10 +25,14 @@ import {
     SharedService,
     SidebarService,
     SettingsService,
-    UserService,
     LoginGuardGuard,
     UploadFileService,
-    ModaluploadService
+    ModaluploadService,
+    
+
+    UserService,
+    HospitalService,
+    DoctorService
   ]
   ,
   declarations: []

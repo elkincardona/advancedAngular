@@ -11,6 +11,10 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 import { LoginGuardGuard } from '../services/service.index';
 import { ProfileComponent } from './profile/profile.component';
 import { UsersComponent } from './users/users.component';
+import { HospitalsComponent } from './hospitals/hospitals.component';
+import { DoctorsComponent } from './doctors/doctors.component';
+import { DoctorComponent } from './doctors/doctor.component';
+
 
 
 
@@ -29,6 +33,9 @@ const pagesRouter: Routes = [
             // maintenance
             {path: 'profile', component: ProfileComponent, data: {tittle: 'User Profile'}},
             {path: 'users', component: UsersComponent, data: {tittle: 'Users admin'}},
+            {path: 'hospitals', component: HospitalsComponent, data: {tittle: 'Hospitals admin'}},
+            {path: 'doctors', component: DoctorsComponent, data: {tittle: 'Doctors admin'}},
+            {path: 'doctor/:id', component: DoctorComponent, data: {tittle: 'Update doctor'}},
             {path: '', redirectTo: '/dashboard', pathMatch: 'full' }
         ]
     }
