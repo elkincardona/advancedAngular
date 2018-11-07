@@ -72,9 +72,10 @@ export class LoginComponent implements OnInit {
 
     this._userService.login(user, form.value.remember)
     .subscribe( resp => {
-        //this._router.navigate([ '/dashboard' ]);
+        // this._router.navigate([ '/dashboard' ]);
         window.location.href = '#/dashboard';
-    }, err => {
+    }, (err) => {
+      //console.log(err);
       swal("Important", err.error.message, "error");
       // console.log(err);
    });

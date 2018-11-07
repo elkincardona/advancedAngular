@@ -5,6 +5,7 @@ import { servicesUrl } from 'src/app/config/config';
 import { map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { UploadFileService } from '../upload-file/upload-file.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,7 @@ export class UserService {
 
   user: User;
   token: string;
+  menu: any = [];
 
   public getUser() {
     return this.user;
@@ -35,18 +37,22 @@ export class UserService {
     if (localStorage.getItem('token')) {
       this.token = localStorage.getItem('token');
       this.user = JSON.parse(localStorage.getItem('user'));
+      this.menu = JSON.parse(localStorage.getItem('menu'));
     } else {
       this.token = '';
       this.user = null;
+      this.menu = [];
     }
   }
 
-  private saveStorage(id: string, token: string, user: User) {
+  private saveStorage(id: string, token: string, user: User, menu: any) {
     localStorage.setItem('id', id);
     localStorage.setItem('token', token);
     localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('menu', JSON.stringify(menu));
     this.user = user;
     this.token = token;
+    this.menu = menu;
   }
 
 
@@ -67,9 +73,15 @@ export class UserService {
         // localStorage.setItem('id', resp.user._id);
         // localStorage.setItem('token', resp.token);
         // localStorage.setItem('user', JSON.stringify(resp.user));
-        this.saveStorage(resp.user._id, resp.token, resp.user);
+        this.saveStorage(resp.user._id, resp.token, resp.user, resp.menu);
         return true;
       })
+      // CATCH HANDLING
+      // ,
+      // catchError((err, caught) => {
+      //   //console.log(err);
+      //   return Observable.throw(err);
+      // })
 
     );
   }
@@ -84,7 +96,7 @@ export class UserService {
     .pipe(
 
       map( (resp: any) => {
-        this.saveStorage(resp.user._id, resp.token, resp.user);
+        this.saveStorage(resp.user._id, resp.token, resp.user, resp.menu);
         return true;
       })
 
@@ -95,8 +107,10 @@ export class UserService {
   logout() {
     this.user = null;
     this.token = '';
+    this.menu = [];
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    localStorage.removeItem('menu');
     this._router.navigate(['/login']);
 
   }
@@ -127,7 +141,7 @@ export class UserService {
 
       map( (resp: any) => {
         swal("Important", "User updated correctly", "success");
-        this.saveStorage(resp.user._id, this.token, resp.user);
+        this.saveStorage(resp.user._id, this.token, resp.user, this.menu);
         return true;
       })
 
@@ -142,7 +156,7 @@ export class UserService {
       .then( (resp: any) => {
         swal('Image updated', this.user.name, 'success');
         this.user.image = resp.users.image;
-        this.saveStorage(this.user._id, this.token, this.user);
+        this.saveStorage(this.user._id, this.token, this.user, this.menu);
       })
       .catch( err => {
           console.log(err);
@@ -201,7 +215,7 @@ export class UserService {
 
      map( (resp: any) => {
        if (this.user._id === user._id) {
-        this.saveStorage(resp.user._id, this.token, resp.user);
+        this.saveStorage(resp.user._id, this.token, resp.user, this.menu);
        }
        return true;
      })
