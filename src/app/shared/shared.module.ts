@@ -10,6 +10,7 @@ import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { HeaderComponent } from './header/header.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { NopagefoundComponent } from './nopagefound/nopagefound.component';
+import { ModaluploadComponent } from '../components/modalupload/modalupload.component';
 
 
 @NgModule({
@@ -22,13 +23,15 @@ import { NopagefoundComponent } from './nopagefound/nopagefound.component';
         BreadcrumbsComponent,
         HeaderComponent,
         SidebarComponent,
-        NopagefoundComponent
+        NopagefoundComponent,
+        ModaluploadComponent
     ],
     exports: [
         BreadcrumbsComponent,
         HeaderComponent,
         SidebarComponent,
         NopagefoundComponent,
+        ModaluploadComponent
     ]
 })
 export class SharedModule { }

@@ -11,7 +11,8 @@ import {
   UploadFileService,
   HospitalService,
   DoctorService,
-  AdminGuard
+  AdminGuard,
+  ChecktokenGuard
 } from './service.index';
 
 
@@ -28,6 +29,7 @@ import {
     SettingsService,
     LoginGuardGuard,
     AdminGuard,
+    ChecktokenGuard,
     UploadFileService,
     ModaluploadService,
 

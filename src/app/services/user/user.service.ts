@@ -5,7 +5,7 @@ import { servicesUrl } from 'src/app/config/config';
 import { map, catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { UploadFileService } from '../upload-file/upload-file.service';
-import { Observable } from 'rxjs';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +28,25 @@ export class UserService {
     this.loadStorage();
   }
 
+  refreshToken() {
+    let url = servicesUrl + '/login/refreshtoken';
+    url += '?token=' + this.token;
+
+    return this.http.get(url).pipe(
+      map( (resp: any) => {
+        console.log(resp);
+        this.token = resp.token;
+        localStorage.setItem('token', this.token);
+        return true;
+      }),
+      catchError((err) => {
+        swal("Error", "Error getting a new token", "error");
+        this.logout();
+        this._router.navigate(['/login']);
+        return throwError(err);
+      })
+    );
+  }
 
   isLogged() {
     return (this.token) ? true : false;
@@ -75,13 +94,10 @@ export class UserService {
         // localStorage.setItem('user', JSON.stringify(resp.user));
         this.saveStorage(resp.user._id, resp.token, resp.user, resp.menu);
         return true;
+      }),
+      catchError((err) => {
+        return throwError(err);
       })
-      // CATCH HANDLING
-      // ,
-      // catchError((err, caught) => {
-      //   //console.log(err);
-      //   return Observable.throw(err);
-      // })
 
     );
   }
@@ -123,7 +139,7 @@ export class UserService {
     .pipe(
 
       map( (resp: any) => {
-        swal("Importante", "User created correctly", "success");
+        swal("Important", "User created correctly", "success");
         return resp.user;
       })
 

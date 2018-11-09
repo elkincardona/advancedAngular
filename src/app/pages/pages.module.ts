@@ -27,7 +27,7 @@ import { PromisesComponent } from './promises/promises.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { ProfileComponent } from './profile/profile.component';
 import { UsersComponent } from './users/users.component';
-import { ModaluploadComponent } from '../components/modalupload/modalupload.component';
+// import { ModaluploadComponent } from '../components/modalupload/modalupload.component';
 import { HospitalsComponent } from './hospitals/hospitals.component';
 import { DoctorsComponent } from './doctors/doctors.component';
 import { DoctorComponent } from './doctors/doctor.component';
@@ -38,7 +38,7 @@ import { SearchComponent } from './search/search.component';
 
 @NgModule({
     declarations: [
-        PagesComponent,
+        // PagesComponent,
         DashboardComponent,
         ProgressComponent,
         Graphics1Component,
@@ -49,20 +49,20 @@ import { SearchComponent } from './search/search.component';
         RxjsComponent,
         ProfileComponent,
         UsersComponent,
-        ModaluploadComponent,
+        // ModaluploadComponent,
         HospitalsComponent,
         DoctorsComponent,
         DoctorComponent,
         SearchComponent
     ],
     exports: [
-        PagesComponent,
+        // PagesComponent,
         DashboardComponent,
         ProgressComponent,
         Graphics1Component
     ],
     imports: [
-        SharedModule,
+        // SharedModule,
         PAGES_ROUTER,
         FormsModule,
         ChartsModule,
